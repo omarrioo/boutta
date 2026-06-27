@@ -183,35 +183,64 @@ function startMemoryOne() {
   });
 }
 
-continueBtn.addEventListener("click", () => {
+continueBtn.onclick = () => {
   if (!selectedAnswer) return;
 
-  showMemoryMessage("😂❤️", "Exactly!", "You are all of them.");
-});
+  if (document.getElementById("memory-number").textContent.includes("#1")) {
+    showMemoryMessage(
+      "😂❤️",
+      "Exactly!",
+      "You are all of them.",
+      startRelationshipTimer,
+    );
+
+    return;
+  }
+
+  if (document.getElementById("memory-number").textContent.includes("#3")) {
+    if (selectedAnswer !== "Thursday") {
+      showMemoryMessage("🤭", "Almost...", "The correct answer is Thursday ❤️");
+
+      return;
+    }
+
+    startMeetingDate();
+  }
+};
+
 /* ==========================================
    MEMORY MESSAGE
 ========================================== */
 
-function showMemoryMessage(emoji, title, message) {
+function showMemoryMessage(emoji, title, message, nextAction = null) {
   showScreen(memoryScreen);
 
-  document.getElementById("memory-title").textContent = "Memory #1 ❤️";
+  document.getElementById("memory-title").textContent = "Memory ❤️";
 
   document.getElementById("memory-heading").textContent = title;
 
   document.getElementById("memory-content").innerHTML = `
         <div style="text-align:center;padding:20px 0;">
-            <div style="font-size:56px;margin-bottom:16px;">${emoji}</div>
+            <div style="font-size:56px;margin-bottom:16px;">
+                ${emoji}
+            </div>
+
             <p style="font-size:22px;color:white;">
                 ${message}
             </p>
         </div>
     `;
+
+  memoryNext.onclick = () => {
+    if (nextAction) {
+      nextAction();
+    }
+  };
 }
 
-document.getElementById("memory-next").addEventListener("click", () => {
-  startRelationshipTimer();
-});
+const memoryNext = document.getElementById("memory-next");
+
+memoryNext.onclick = null;
 /* ==========================================
    RELATIONSHIP TIMER
 ========================================== */
@@ -253,5 +282,67 @@ document.getElementById("timer-next").addEventListener("click", () => {
   clearInterval(window.relationshipInterval);
 
   // هنبدأ Memory #3 هنا
-  alert("Memory #3 - Coming next 🚀");
+  startMemoryThree();
 });
+/* ==========================================
+   MEMORY #3
+========================================== */
+
+function startMemoryThree() {
+  showScreen(questionScreen);
+
+  document.getElementById("memory-number").textContent = "Memory #3 ❤️";
+
+  questionTitle.textContent = "Do you remember our first meeting? 🥹";
+
+  questionSubtitle.textContent = "Choose the day.";
+
+  continueBtn.disabled = true;
+
+  continueBtn.style.display = "block";
+
+  selectedAnswer = null;
+
+  const days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  questionContent.innerHTML = "";
+
+  days.forEach((day) => {
+    const item = document.createElement("div");
+
+    item.className = "choice";
+
+    item.textContent = day;
+
+    item.onclick = () => {
+      document
+        .querySelectorAll(".choice")
+        .forEach((c) => c.classList.remove("selected"));
+
+      item.classList.add("selected");
+
+      selectedAnswer = day;
+
+      continueBtn.disabled = false;
+    };
+
+    questionContent.appendChild(item);
+  });
+}
+function startMeetingDate() {
+  showMemoryMessage(
+    "🥹",
+
+    "Exactly ❤️",
+
+    "06 / 11 / 2025",
+  );
+}
