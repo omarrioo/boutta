@@ -323,3 +323,47 @@ body {
     opacity: 0.3;
   }
 }
+/* ========================= */
+/* Fake Blurred Message */
+/* ========================= */
+
+.message-preview {
+  margin-top: 12px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.blur-line {
+  height: 10px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.08)
+  );
+
+  filter: blur(0.4px);
+}
+
+.w90 {
+  width: 90%;
+}
+
+.w65 {
+  width: 65%;
+}
+.notification-left {
+  font-weight: 600;
+
+  opacity: 0.75;
+}
+
+.notification-right {
+  opacity: 0.55;
+}
