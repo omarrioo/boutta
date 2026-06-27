@@ -304,13 +304,13 @@ function startMemoryThree() {
   selectedAnswer = null;
 
   const days = [
+    "Saturday",
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday",
-    "Sunday",
   ];
 
   questionContent.innerHTML = "";
@@ -338,11 +338,195 @@ function startMemoryThree() {
   });
 }
 function startMeetingDate() {
+  showScreen(questionScreen);
+
+  document.getElementById("memory-number").textContent = "Memory #3 ❤️";
+
+  questionTitle.textContent = "Choose the date ❤️";
+
+  questionSubtitle.textContent = "One more step...";
+
+  continueBtn.disabled = true;
+
+  selectedAnswer = null;
+
+  questionContent.innerHTML = "";
+
+  const input = document.createElement("input");
+
+  input.type = "date";
+
+  input.className = "date-input";
+
+  input.onchange = () => {
+    selectedAnswer = input.value;
+
+    continueBtn.disabled = false;
+  };
+
+  questionContent.appendChild(input);
+
+  continueBtn.onclick = () => {
+    if (selectedAnswer !== "2025-11-06") {
+      showMemoryMessage(
+        "🤭",
+
+        "Close...",
+
+        "The correct date is 06 / 11 / 2025 ❤️",
+
+        startMemoryFour,
+      );
+
+      return;
+    }
+
+    showMemoryMessage(
+      "🥹",
+
+      "Exactly ❤️",
+
+      "06 / 11 / 2025",
+
+      startMemoryFour,
+    );
+  };
+}
+function startMemoryFour() {
   showMemoryMessage(
-    "🥹",
+    "😂❤️",
 
-    "Exactly ❤️",
+    "A memory I'll never forget...",
 
-    "06 / 11 / 2025",
+    `Teaching you the rules since day one.<br><br>
+        <strong>"لما رقمك يتضرب ابقي تعالي"</strong>`,
+
+    startMemoryFive,
   );
+}
+function startMemoryFive() {
+  showScreen(questionScreen);
+
+  document.getElementById("memory-number").textContent = "Memory #5 💍";
+
+  questionTitle.textContent = "Do you remember what day we got engaged? 💍";
+
+  questionSubtitle.textContent = "Choose the correct day.";
+
+  continueBtn.disabled = true;
+
+  selectedAnswer = null;
+
+  questionContent.innerHTML = "";
+
+  const days = [
+    "Monday",
+
+    "Tuesday",
+
+    "Wednesday",
+
+    "Thursday",
+
+    "Friday",
+
+    "Saturday",
+
+    "Sunday",
+  ];
+
+  days.forEach((day) => {
+    const item = document.createElement("div");
+
+    item.className = "choice";
+
+    item.textContent = day;
+
+    item.onclick = () => {
+      document
+        .querySelectorAll(".choice")
+        .forEach((c) => c.classList.remove("selected"));
+
+      item.classList.add("selected");
+
+      selectedAnswer = day;
+
+      continueBtn.disabled = false;
+    };
+
+    questionContent.appendChild(item);
+  });
+
+  continueBtn.onclick = () => {
+    if (selectedAnswer !== "Tuesday") {
+      showMemoryMessage(
+        "🤭",
+
+        "Close...",
+
+        "It was Tuesday ❤️",
+
+        startEngagementDate,
+      );
+
+      return;
+    }
+
+    startEngagementDate();
+  };
+}
+function startEngagementDate() {
+  showScreen(questionScreen);
+
+  document.getElementById("memory-number").textContent = "Memory #5 💍";
+
+  questionTitle.textContent = "Choose our engagement date ❤️";
+
+  questionSubtitle.textContent = "Easy one 😌";
+
+  continueBtn.disabled = true;
+
+  selectedAnswer = null;
+
+  questionContent.innerHTML = "";
+
+  const input = document.createElement("input");
+
+  input.type = "date";
+
+  input.className = "date-input";
+
+  input.onchange = () => {
+    selectedAnswer = input.value;
+
+    continueBtn.disabled = false;
+  };
+
+  questionContent.appendChild(input);
+
+  continueBtn.onclick = () => {
+    if (selectedAnswer !== "2026-03-03") {
+      showMemoryMessage(
+        "💍",
+
+        "Almost ❤️",
+
+        "03 / 03 / 2026",
+
+        startEnvelopeScreen,
+      );
+
+      return;
+    }
+
+    showMemoryMessage(
+      "💖",
+
+      "One of the best days of my life ❤️",
+
+      "03 / 03 / 2026",
+
+      startEnvelopeScreen,
+    );
+  };
 }
