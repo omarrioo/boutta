@@ -3,368 +3,323 @@
    Version 1
 =========================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
-body{
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 
-    width:100%;
-    height:100%;
-    overflow:hidden;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
 
-    font-family:-apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Segoe UI",
-    sans-serif;
+  background: #000;
+  color: white;
 
-    background:#000;
-    color:white;
-
-    -webkit-tap-highlight-color:transparent;
-
+  -webkit-tap-highlight-color: transparent;
 }
 
-body{
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ========================= */
 
-.screen{
+.screen {
+  position: absolute;
 
-    position:absolute;
+  inset: 0;
 
-    inset:0;
+  display: flex;
 
-    display:flex;
+  justify-content: center;
+  align-items: center;
 
-    justify-content:center;
-    align-items:center;
+  opacity: 0;
+  pointer-events: none;
 
-    opacity:0;
-    pointer-events:none;
-
-    transition:.65s ease;
-
+  transition: 0.65s ease;
 }
 
-.screen.active{
-
-    opacity:1;
-    pointer-events:auto;
-
+.screen.active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* ========================= */
 /* Lock Screen */
 /* ========================= */
 
-#lock-screen{
-
-    background:
-    linear-gradient(
-    180deg,
-    #0d1117,
-    #000000);
-
+#lock-screen {
+  background: linear-gradient(180deg, #0d1117, #000000);
 }
 
-.lock-wrapper{
+.lock-wrapper {
+  width: 100%;
+  height: 100%;
 
-    width:100%;
-    height:100%;
+  display: flex;
+  flex-direction: column;
 
-    display:flex;
-    flex-direction:column;
+  justify-content: space-between;
 
-    justify-content:space-between;
+  align-items: center;
 
-    align-items:center;
-
-    padding:
-
-    max(55px,env(safe-area-inset-top))
-
-    24px
-
-    max(40px,env(safe-area-inset-bottom));
-
+  padding: max(55px, env(safe-area-inset-top)) 24px
+    max(40px, env(safe-area-inset-bottom));
 }
 
 /* Time */
 
-.time{
+.time {
+  margin-top: 30px;
 
-    margin-top:30px;
+  font-size: 82px;
 
-    font-size:82px;
+  font-weight: 200;
 
-    font-weight:200;
-
-    letter-spacing:-3px;
-
+  letter-spacing: -3px;
 }
 
 /* Date */
 
-.date{
+.date {
+  margin-top: -10px;
 
-    margin-top:-10px;
+  font-size: 20px;
 
-    font-size:20px;
-
-    opacity:.8;
-
+  opacity: 0.8;
 }
 
 /* Notification */
 
-.notification{
+.notification {
+  width: min(92%, 380px);
 
-    width:min(92%,380px);
+  padding: 18px;
 
-    padding:18px;
+  border-radius: 28px;
 
-    border-radius:28px;
+  backdrop-filter: blur(35px);
 
-    backdrop-filter:blur(35px);
+  background: rgba(255, 255, 255, 0.08);
 
-    background:
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
-    rgba(255,255,255,.08);
-
-    border:
-
-    1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-
-    0 20px 60px rgba(0,0,0,.45);
-
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 }
 
-.notification-top{
+.notification-top {
+  display: flex;
 
-    display:flex;
+  justify-content: space-between;
 
-    justify-content:space-between;
+  font-size: 14px;
 
-    font-size:14px;
-
-    opacity:.7;
-
+  opacity: 0.7;
 }
 
-.sender{
+.sender {
+  margin-top: 10px;
 
-    margin-top:10px;
+  font-size: 17px;
 
-    font-size:17px;
-
-    font-weight:600;
-
+  font-weight: 600;
 }
 
-.message-preview{
+.message-preview {
+  margin-top: 8px;
 
-    margin-top:8px;
+  opacity: 0.55;
 
-    opacity:.55;
-
-    letter-spacing:3px;
-
+  letter-spacing: 3px;
 }
 
 /* Unlock */
 
-.unlock{
+.unlock {
+  margin-bottom: 20px;
 
-    margin-bottom:20px;
+  font-size: 15px;
 
-    font-size:15px;
+  opacity: 0.7;
 
-    opacity:.7;
-
-    animation:pulse 2s infinite;
-
+  animation: pulse 2s infinite;
 }
 
 /* ========================= */
 /* Face */
 /* ========================= */
 
-#face-screen{
-
-    background:#000;
-
+#face-screen {
+  background: #000;
 }
 
-.face-wrapper{
+.face-wrapper {
+  display: flex;
 
-    display:flex;
+  flex-direction: column;
 
-    flex-direction:column;
+  align-items: center;
 
-    align-items:center;
-
-    gap:22px;
-
+  gap: 22px;
 }
 
-.face-box{
+.face-box {
+  width: 150px;
 
-    width:150px;
+  height: 150px;
 
-    height:150px;
-
-    position:relative;
-
+  position: relative;
 }
 
-.corner{
+.corner {
+  position: absolute;
 
-    position:absolute;
+  width: 35px;
+  height: 35px;
 
-    width:35px;
-    height:35px;
-
-    border:4px solid #30d5ff;
-
+  border: 4px solid #30d5ff;
 }
 
-.tl{
+.tl {
+  top: 0;
+  left: 0;
 
-    top:0;
-    left:0;
-
-    border-right:none;
-    border-bottom:none;
-
+  border-right: none;
+  border-bottom: none;
 }
 
-.tr{
+.tr {
+  top: 0;
+  right: 0;
 
-    top:0;
-    right:0;
-
-    border-left:none;
-    border-bottom:none;
-
+  border-left: none;
+  border-bottom: none;
 }
 
-.bl{
+.bl {
+  bottom: 0;
+  left: 0;
 
-    bottom:0;
-    left:0;
-
-    border-right:none;
-    border-top:none;
-
+  border-right: none;
+  border-top: none;
 }
 
-.br{
+.br {
+  bottom: 0;
+  right: 0;
 
-    bottom:0;
-    right:0;
-
-    border-left:none;
-    border-top:none;
-
+  border-left: none;
+  border-top: none;
 }
 
-.face-box{
-
-    animation:scan 2s infinite;
-
+.face-box {
+  animation: scan 2s infinite;
 }
 
-.face-wrapper h2{
+.face-wrapper h2 {
+  font-size: 34px;
 
-    font-size:34px;
-
-    font-weight:500;
-
+  font-weight: 500;
 }
 
-.face-wrapper p{
-
-    opacity:.6;
-
+.face-wrapper p {
+  opacity: 0.6;
 }
 
 /* ========================= */
 /* Hello */
 /* ========================= */
 
-#hello-screen{
-
-    background:#000;
-
+#hello-screen {
+  background: #000;
 }
 
-#hello-screen h1{
+#hello-screen h1 {
+  text-align: center;
 
-    text-align:center;
+  font-size: 48px;
 
-    font-size:48px;
+  line-height: 1.3;
 
-    line-height:1.3;
-
-    font-weight:300;
-
+  font-weight: 300;
 }
 
 /* ========================= */
 
-@keyframes pulse{
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
 
-    0%{
+  50% {
+    opacity: 1;
+  }
 
-        opacity:.4;
-
-    }
-
-    50%{
-
-        opacity:1;
-
-    }
-
-    100%{
-
-        opacity:.4;
-
-    }
-
+  100% {
+    opacity: 0.4;
+  }
 }
 
-@keyframes scan{
+@keyframes scan {
+  0% {
+    transform: scale(0.92);
+  }
 
-    0%{
+  50% {
+    transform: scale(1);
+  }
 
-        transform:scale(.92);
+  100% {
+    transform: scale(0.92);
+  }
+}
+/* Swipe Arrow */
 
-    }
+.arrow {
+  font-size: 34px;
 
-    50%{
+  margin-bottom: 10px;
 
-        transform:scale(1);
+  animation: arrowMove 1.4s ease-in-out infinite;
+}
 
-    }
+.unlock {
+  display: flex;
 
-    100%{
+  flex-direction: column;
 
-        transform:scale(.92);
+  align-items: center;
 
-    }
+  gap: 6px;
 
+  user-select: none;
+}
+
+@keyframes arrowMove {
+  0% {
+    transform: translateY(8px);
+
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(0px);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(8px);
+
+    opacity: 0.3;
+  }
 }
