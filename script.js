@@ -484,7 +484,7 @@ function startEngagementDate() {
 
   questionSubtitle.textContent = "Easy one 😌";
 
-  continueBtn.disabled = true;
+  newContinueBtn.disabled = true;
 
   selectedAnswer = null;
 
@@ -499,7 +499,7 @@ function startEngagementDate() {
   function enableDateSelection() {
     selectedAnswer = input.value;
 
-    continueBtn.disabled = false;
+    newContinueBtn.disabled = false;
   }
 
   input.addEventListener("input", enableDateSelection);
@@ -509,7 +509,10 @@ function startEngagementDate() {
 
   continueBtn.disabled = false;
   selectedAnswer = "2026-03-03";
-  continueBtn.onclick = () => {
+  continueBtn.replaceWith(continueBtn.cloneNode(true));
+
+  const newContinueBtn = document.getElementById("continue-btn");
+  newContinueBtn.onclick = () => {
     console.log("Done Clicked");
     if (selectedAnswer !== "2026-03-03") {
       showMemoryMessage(
