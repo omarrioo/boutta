@@ -1,1 +1,370 @@
+/* ===========================
+   Project Boutta
+   Version 1
+=========================== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
+    font-family:-apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Segoe UI",
+    sans-serif;
+
+    background:#000;
+    color:white;
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+body{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+/* ========================= */
+
+.screen{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.65s ease;
+
+}
+
+.screen.active{
+
+    opacity:1;
+    pointer-events:auto;
+
+}
+
+/* ========================= */
+/* Lock Screen */
+/* ========================= */
+
+#lock-screen{
+
+    background:
+    linear-gradient(
+    180deg,
+    #0d1117,
+    #000000);
+
+}
+
+.lock-wrapper{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:
+
+    max(55px,env(safe-area-inset-top))
+
+    24px
+
+    max(40px,env(safe-area-inset-bottom));
+
+}
+
+/* Time */
+
+.time{
+
+    margin-top:30px;
+
+    font-size:82px;
+
+    font-weight:200;
+
+    letter-spacing:-3px;
+
+}
+
+/* Date */
+
+.date{
+
+    margin-top:-10px;
+
+    font-size:20px;
+
+    opacity:.8;
+
+}
+
+/* Notification */
+
+.notification{
+
+    width:min(92%,380px);
+
+    padding:18px;
+
+    border-radius:28px;
+
+    backdrop-filter:blur(35px);
+
+    background:
+
+    rgba(255,255,255,.08);
+
+    border:
+
+    1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+
+    0 20px 60px rgba(0,0,0,.45);
+
+}
+
+.notification-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:14px;
+
+    opacity:.7;
+
+}
+
+.sender{
+
+    margin-top:10px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+.message-preview{
+
+    margin-top:8px;
+
+    opacity:.55;
+
+    letter-spacing:3px;
+
+}
+
+/* Unlock */
+
+.unlock{
+
+    margin-bottom:20px;
+
+    font-size:15px;
+
+    opacity:.7;
+
+    animation:pulse 2s infinite;
+
+}
+
+/* ========================= */
+/* Face */
+/* ========================= */
+
+#face-screen{
+
+    background:#000;
+
+}
+
+.face-wrapper{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:22px;
+
+}
+
+.face-box{
+
+    width:150px;
+
+    height:150px;
+
+    position:relative;
+
+}
+
+.corner{
+
+    position:absolute;
+
+    width:35px;
+    height:35px;
+
+    border:4px solid #30d5ff;
+
+}
+
+.tl{
+
+    top:0;
+    left:0;
+
+    border-right:none;
+    border-bottom:none;
+
+}
+
+.tr{
+
+    top:0;
+    right:0;
+
+    border-left:none;
+    border-bottom:none;
+
+}
+
+.bl{
+
+    bottom:0;
+    left:0;
+
+    border-right:none;
+    border-top:none;
+
+}
+
+.br{
+
+    bottom:0;
+    right:0;
+
+    border-left:none;
+    border-top:none;
+
+}
+
+.face-box{
+
+    animation:scan 2s infinite;
+
+}
+
+.face-wrapper h2{
+
+    font-size:34px;
+
+    font-weight:500;
+
+}
+
+.face-wrapper p{
+
+    opacity:.6;
+
+}
+
+/* ========================= */
+/* Hello */
+/* ========================= */
+
+#hello-screen{
+
+    background:#000;
+
+}
+
+#hello-screen h1{
+
+    text-align:center;
+
+    font-size:48px;
+
+    line-height:1.3;
+
+    font-weight:300;
+
+}
+
+/* ========================= */
+
+@keyframes pulse{
+
+    0%{
+
+        opacity:.4;
+
+    }
+
+    50%{
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        opacity:.4;
+
+    }
+
+}
+
+@keyframes scan{
+
+    0%{
+
+        transform:scale(.92);
+
+    }
+
+    50%{
+
+        transform:scale(1);
+
+    }
+
+    100%{
+
+        transform:scale(.92);
+
+    }
+
+}
