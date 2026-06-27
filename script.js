@@ -404,6 +404,10 @@ function startMemoryFour() {
     startMemoryFive,
   );
 }
+/* ==========================================
+   MEMORY #5
+========================================== */
+
 function startMemoryFive() {
   showScreen(questionScreen);
 
@@ -413,25 +417,18 @@ function startMemoryFive() {
 
   questionSubtitle.textContent = "Choose the correct day.";
 
-  continueBtn.disabled = true;
-
-  selectedAnswer = null;
-
   questionContent.innerHTML = "";
+
+  continueBtn.disabled = true;
+  selectedAnswer = "";
 
   const days = [
     "Monday",
-
     "Tuesday",
-
     "Wednesday",
-
     "Thursday",
-
     "Friday",
-
     "Saturday",
-
     "Sunday",
   ];
 
@@ -439,7 +436,6 @@ function startMemoryFive() {
     const item = document.createElement("div");
 
     item.className = "choice";
-
     item.textContent = day;
 
     item.onclick = () => {
@@ -459,15 +455,7 @@ function startMemoryFive() {
 
   continueBtn.onclick = () => {
     if (selectedAnswer !== "Tuesday") {
-      showMemoryMessage(
-        "🤭",
-
-        "Close...",
-
-        "It was Tuesday ❤️",
-
-        startEngagementDate,
-      );
+      showMemoryMessage("🤭", "Close...", "It was Tuesday ❤️", startMemoryFive);
 
       return;
     }
@@ -475,6 +463,11 @@ function startMemoryFive() {
     startEngagementDate();
   };
 }
+
+/* ==========================================
+   ENGAGEMENT DATE
+========================================== */
+
 function startEngagementDate() {
   showScreen(questionScreen);
 
@@ -482,43 +475,36 @@ function startEngagementDate() {
 
   questionTitle.textContent = "Choose our engagement date ❤️";
 
-  questionSubtitle.textContent = "Easy one 😌";
-
-  newContinueBtn.disabled = true;
-
-  selectedAnswer = null;
+  questionSubtitle.textContent = "One more question...";
 
   questionContent.innerHTML = "";
+
+  continueBtn.disabled = true;
+
+  selectedAnswer = "";
 
   const input = document.createElement("input");
 
   input.type = "date";
-
   input.className = "date-input";
 
-  function enableDateSelection() {
+  function enableDate() {
     selectedAnswer = input.value;
 
-    newContinueBtn.disabled = false;
+    continueBtn.disabled = false;
   }
 
-  input.addEventListener("input", enableDateSelection);
-  input.addEventListener("change", enableDateSelection);
+  input.addEventListener("input", enableDate);
+  input.addEventListener("change", enableDate);
 
   questionContent.appendChild(input);
 
-  continueBtn.disabled = false;
-  selectedAnswer = "2026-03-03";
-  continueBtn.replaceWith(continueBtn.cloneNode(true));
-
-  const newContinueBtn = document.getElementById("continue-btn");
-  newContinueBtn.onclick = () => {
-    console.log("Done Clicked");
-    if (selectedAnswer !== "2026-03-03") {
+  continueBtn.onclick = () => {
+    if (selectedAnswer === "2026-03-03") {
       showMemoryMessage(
-        "💍",
+        "💖",
 
-        "Almost ❤️",
+        "One of the best days of my life ❤️",
 
         "03 / 03 / 2026",
 
@@ -529,13 +515,21 @@ function startEngagementDate() {
     }
 
     showMemoryMessage(
-      "💖",
+      "🤭",
 
-      "One of the best days of my life ❤️",
+      "Almost...",
 
-      "03 / 03 / 2026",
+      "The correct date is 03 / 03 / 2026 ❤️",
 
-      startEnvelopeScreen,
+      startEngagementDate,
     );
   };
+}
+
+/* ==========================================
+   ENVELOPE
+========================================== */
+
+function startEnvelopeScreen() {
+  showScreen(envelopeScreen);
 }
