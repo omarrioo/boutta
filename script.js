@@ -505,6 +505,7 @@ function startEngagementDate() {
   questionContent.appendChild(input);
 
   continueBtn.onclick = () => {
+    console.log("Done Clicked");
     if (selectedAnswer !== "2026-03-03") {
       showMemoryMessage(
         "💍",
