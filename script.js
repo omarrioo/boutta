@@ -11,6 +11,9 @@ const helloScreen = document.getElementById("hello-screen");
 // Time & Date
 const timeElement = document.getElementById("time");
 const dateElement = document.getElementById("date");
+const faceStatus = document.getElementById("face-status");
+const helloMessage = document.getElementById("hello-message");
+const identityConfirmed = document.getElementById("identity-confirmed");
 
 // -------------------------------------
 // Update Lock Screen Clock
@@ -63,26 +66,27 @@ lockScreen.addEventListener("touchstart", (e) => {
 
 lockScreen.addEventListener("touchend", (e) => {
   const endY = e.changedTouches[0].clientY;
-
   const distance = startY - endY;
 
-  if (distance > 80) {
-    showScreen(faceScreen);
+  if (distance < 80) return;
 
-    setTimeout(() => {
-      showScreen(helloScreen);
-    }, 2500);
-  }
+  showScreen(faceScreen);
+
+  faceStatus.textContent = "Scanning...";
+
+  setTimeout(() => {
+    faceStatus.textContent = "Matching...";
+  }, 1000);
+
+  setTimeout(() => {
+    showScreen(helloScreen);
+
+    identityConfirmed.style.display = "flex";
+    helloMessage.classList.remove("show");
+  }, 2200);
+
+  setTimeout(() => {
+    identityConfirmed.style.display = "none";
+    helloMessage.classList.add("show");
+  }, 3700);
 });
-
-// -------------------------------------
-// Hello Screen
-// -------------------------------------
-
-setTimeout(() => {
-  if (helloScreen.classList.contains("active")) {
-    console.log("Ready for Question 1");
-
-    // هنضيف أول سؤال هنا في Version 2
-  }
-}, 4000);

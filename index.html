@@ -66,26 +66,84 @@
     <!-- Face ID -->
 
     <section id="face-screen" class="screen">
-      <div class="face-container">
-        <div class="face-box"></div>
+
+    <div class="face-wrapper">
+
+        <div class="face-icon">
+
+            <svg viewBox="0 0 120 120">
+
+                <!-- Corners -->
+                <path d="M25 10 H10 V25" />
+                <path d="M95 10 H110 V25" />
+                <path d="M10 95 V110 H25" />
+                <path d="M110 95 V110 H95" />
+
+                <!-- Face -->
+                <circle cx="60" cy="46" r="4"/>
+                <circle cx="42" cy="46" r="4"/>
+
+                <path d="M51 63 Q60 70 69 63"/>
+
+            </svg>
+
+            <div class="scan-line"></div>
+
+        </div>
 
         <h2>Face ID</h2>
 
-        <p>Identifying...</p>
-      </div>
-    </section>
+        <p id="face-status">
+
+            Scanning...
+
+        </p>
+
+    </div>
+
+</section>
 
     <!-- Hello -->
 
     <section id="hello-screen" class="screen">
-      <div class="hello">
-        Hello,
 
-        <br />
+    <div class="hello-wrapper">
 
-        Boutta ❤️
-      </div>
-    </section>
+        <div id="identity-confirmed" class="identity-confirmed">
+
+            <div class="check-circle">
+
+                ✓
+
+            </div>
+
+            <p>
+
+                Identity Confirmed
+
+            </p>
+
+        </div>
+
+        <div id="hello-message" class="hello-message">
+
+            <h1>
+
+                Hello,
+
+            </h1>
+
+            <h2>
+
+                Boutta ❤️
+
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
 
     <script src="script.js"></script>
   </body>
