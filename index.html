@@ -2,148 +2,242 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     />
 
-    <title>Project Boutta ❤️</title>
+    <title>Boutta ❤️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <!-- Lock Screen -->
+    <!-- ========================= -->
+    <!-- LOCK SCREEN -->
+    <!-- ========================= -->
 
     <section id="lock-screen" class="screen active">
-      <div class="lock-content">
-        <div id="time" class="time">12:39</div>
+      <div class="lock-wrapper">
+        <div class="top">
+          <h1 id="time" class="time">12:00</h1>
 
-        <div id="date" class="date">Saturday, June 27</div>
+          <p id="date" class="date">Thursday, June 27</p>
+        </div>
 
         <div class="notification">
           <div class="notification-top">
+            <div class="notification-left">💬 Messages</div>
 
-    <div class="notification-left">
-
-        💬 Messages
-
-    </div>
-
-    <div class="notification-right">
-
-        now
-
-    </div>
-
-</div>
+            <div class="notification-right">now</div>
+          </div>
 
           <div class="sender">Omar ❤️</div>
 
           <div class="message-preview">
+            <div class="blur-line w90"></div>
 
-    <div class="blur-line w90"></div>
-
-    <div class="blur-line w65"></div>
-
-</div>
+            <div class="blur-line w65"></div>
+          </div>
+        </div>
 
         <div class="unlock">
+          <div class="arrow">↑</div>
 
-    <div class="arrow">
-        ↑
-    </div>
-
-    <span>
-
-        Swipe up to unlock
-
-    </span>
-
-</div>
+          <span> Swipe up to unlock </span>
+        </div>
+      </div>
     </section>
 
-    <!-- Face ID -->
+    <!-- ========================= -->
+    <!-- FACE ID -->
+    <!-- ========================= -->
 
     <section id="face-screen" class="screen">
-
-    <div class="face-wrapper">
-
+      <div class="face-wrapper">
         <div class="face-icon">
+          <svg viewBox="0 0 120 120" fill="none">
+            <!-- Corners -->
 
-            <svg viewBox="0 0 120 120">
+            <path d="M25 10 H10 V25" />
 
-                <!-- Corners -->
-                <path d="M25 10 H10 V25" />
-                <path d="M95 10 H110 V25" />
-                <path d="M10 95 V110 H25" />
-                <path d="M110 95 V110 H95" />
+            <path d="M95 10 H110 V25" />
 
-                <!-- Face -->
-                <circle cx="60" cy="46" r="4"/>
-                <circle cx="42" cy="46" r="4"/>
+            <path d="M10 95 V110 H25" />
 
-                <path d="M51 63 Q60 70 69 63"/>
+            <path d="M110 95 V110 H95" />
 
-            </svg>
+            <!-- Eyes -->
 
-            <div class="scan-line"></div>
+            <circle cx="42" cy="46" r="4" />
 
+            <circle cx="78" cy="46" r="4" />
+
+            <!-- Smile -->
+
+            <path d="M45 70 Q60 82 75 70" />
+          </svg>
+
+          <div class="scan-line"></div>
         </div>
 
         <h2>Face ID</h2>
 
-        <p id="face-status">
+        <p id="face-status">Scanning...</p>
+      </div>
+    </section>
 
-            Scanning...
-
-        </p>
-
-    </div>
-
-</section>
-
-    <!-- Hello -->
+    <!-- ========================= -->
+    <!-- HELLO -->
+    <!-- ========================= -->
 
     <section id="hello-screen" class="screen">
-
-    <div class="hello-wrapper">
-
+      <div class="hello-wrapper">
         <div id="identity-confirmed" class="identity-confirmed">
+          <div class="check-circle">✓</div>
 
-            <div class="check-circle">
-
-                ✓
-
-            </div>
-
-            <p>
-
-                Identity Confirmed
-
-            </p>
-
+          <p>Identity Confirmed</p>
         </div>
 
         <div id="hello-message" class="hello-message">
+          <h1>Hello,</h1>
 
-            <h1>
+          <h2>Boutta ❤️</h2>
+        </div>
+      </div>
+    </section>
+    <!-- ========================= -->
+    <!-- QUESTION SCREEN -->
+    <!-- ========================= -->
 
-                Hello,
+    <section id="question-screen" class="screen">
+      <div class="question-card">
+        <span id="memory-number" class="memory-number"> Memory #1 ❤️ </span>
 
-            </h1>
+        <h2 id="question-title">What is your name?</h2>
 
-            <h2>
+        <p id="question-subtitle">Choose one answer.</p>
 
-                Boutta ❤️
+        <!-- Dynamic Content -->
 
-            </h2>
+        <div id="question-content"></div>
 
+        <button id="continue-btn" class="primary-btn">Continue →</button>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- TIMER SCREEN -->
+    <!-- ========================= -->
+
+    <section id="timer-screen" class="screen">
+      <div class="question-card">
+        <span class="memory-number"> Memory #2 ❤️ </span>
+
+        <h2>Can you believe we've known each other for...</h2>
+
+        <div id="relationship-timer" class="relationship-timer">000 Days</div>
+
+        <p class="timer-caption">...and every second has been worth it ❤️</p>
+
+        <button id="timer-next" class="primary-btn">Continue →</button>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- MEMORY CARD -->
+    <!-- ========================= -->
+
+    <section id="memory-screen" class="screen">
+      <div class="question-card">
+        <span id="memory-title" class="memory-number"> Memory ❤️ </span>
+
+        <h2 id="memory-heading"></h2>
+
+        <div id="memory-content"></div>
+
+        <button id="memory-next" class="primary-btn">Continue →</button>
+      </div>
+    </section>
+    <!-- ========================= -->
+    <!-- ENVELOPES -->
+    <!-- ========================= -->
+
+    <section id="envelope-screen" class="screen">
+      <div class="question-card">
+        <span class="memory-number"> Memory #6 ❤️ </span>
+
+        <h2>A little surprise awaits...</h2>
+
+        <p>Choose an envelope ❤️</p>
+
+        <div class="envelopes">
+          <div id="photo-envelope" class="envelope">
+            <div class="envelope-icon">✉️</div>
+
+            <p>Tap here to unleash a beautiful memory 💖</p>
+          </div>
+
+          <div id="letter-envelope" class="envelope">
+            <div class="envelope-icon">💌</div>
+
+            <p>One last letter... just for you ❤️</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- FINAL NOTIFICATION -->
+    <!-- ========================= -->
+
+    <section id="notification-screen" class="screen">
+      <div class="question-card final-card">
+        <div class="iphone-notification">
+          <h2>حقك عليا 😍</h2>
+
+          <p>بحبك 💖</p>
+
+          <p>هتجوزك 💍</p>
+
+          <p>يا صغنونة 👼🏻</p>
         </div>
 
-    </div>
+        <button id="mark-read-btn" class="primary-btn">Mark as Read ❤️</button>
+      </div>
+    </section>
+    <!-- ========================= -->
+    <!-- DATE SCREEN -->
+    <!-- ========================= -->
 
-</section>
+    <section id="date-screen" class="screen">
+      <div class="question-card">
+        <span class="memory-number"> Memory #10 ❤️ </span>
+
+        <h2>Choose our date ❤️</h2>
+
+        <div id="date-options"></div>
+
+        <button id="date-next" class="primary-btn">Done ❤️</button>
+      </div>
+    </section>
+    <!-- ========================= -->
+    <!-- MODAL -->
+    <!-- ========================= -->
+
+    <div id="modal" class="modal hidden">
+      <div id="modal-content"></div>
+    </div>
 
     <script src="script.js"></script>
   </body>

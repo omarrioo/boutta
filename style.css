@@ -1,7 +1,11 @@
-/* ===========================
-   Project Boutta
-   Version 1
-=========================== */
+/* =======================================
+   PROJECT BOUTTA
+   VERSION 2
+======================================= */
+
+/* =======================================
+   RESET
+======================================= */
 
 * {
   margin: 0;
@@ -13,24 +17,52 @@ html,
 body {
   width: 100%;
   height: 100%;
+
   overflow: hidden;
 
   font-family:
-    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Poppins", sans-serif;
 
   background: #000;
-  color: white;
+
+  color: #fff;
 
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* =======================================
+   VARIABLES
+======================================= */
+
+:root {
+  --background: #000000;
+
+  --card: rgba(255, 255, 255, 0.08);
+
+  --border: rgba(255, 255, 255, 0.1);
+
+  --primary: #4da3ff;
+
+  --text: #ffffff;
+
+  --secondary: rgba(255, 255, 255, 0.7);
+
+  --radius: 28px;
+
+  --transition: 0.45s ease;
 }
 
-/* ========================= */
+/* =======================================
+   SHARED
+======================================= */
+
+body {
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
 
 .screen {
   position: absolute;
@@ -40,22 +72,97 @@ body {
   display: flex;
 
   justify-content: center;
+
   align-items: center;
 
+  padding: max(20px, env(safe-area-inset-top)) 20px
+    max(20px, env(safe-area-inset-bottom));
+
   opacity: 0;
+
   pointer-events: none;
 
-  transition: 0.65s ease;
+  transition: 0.6s;
 }
 
 .screen.active {
   opacity: 1;
+
   pointer-events: auto;
 }
 
-/* ========================= */
-/* Lock Screen */
-/* ========================= */
+.question-card {
+  width: min(92vw, 390px);
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  backdrop-filter: blur(28px);
+
+  border-radius: var(--radius);
+
+  padding: 28px;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+}
+
+.memory-number {
+  display: block;
+
+  color: var(--primary);
+
+  font-size: 14px;
+
+  margin-bottom: 16px;
+}
+
+.question-card h2 {
+  font-size: 30px;
+
+  line-height: 1.3;
+
+  font-weight: 600;
+}
+
+.question-card p {
+  margin-top: 12px;
+
+  color: var(--secondary);
+
+  line-height: 1.6;
+}
+
+.primary-btn {
+  width: 100%;
+
+  margin-top: 30px;
+
+  border: none;
+
+  border-radius: 18px;
+
+  padding: 16px;
+
+  cursor: pointer;
+
+  background: var(--primary);
+
+  color: #fff;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  transition: var(--transition);
+}
+
+.primary-btn:active {
+  transform: scale(0.97);
+}
+/* =======================================
+   LOCK SCREEN
+======================================= */
 
 #lock-screen {
   background: linear-gradient(180deg, #0d1117, #000000);
@@ -66,6 +173,7 @@ body {
   height: 100%;
 
   display: flex;
+
   flex-direction: column;
 
   justify-content: space-between;
@@ -76,11 +184,11 @@ body {
     max(40px, env(safe-area-inset-bottom));
 }
 
-/* Time */
+.top {
+  text-align: center;
+}
 
 .time {
-  margin-top: 30px;
-
   font-size: 82px;
 
   font-weight: 200;
@@ -88,30 +196,30 @@ body {
   letter-spacing: -3px;
 }
 
-/* Date */
-
 .date {
-  margin-top: -10px;
+  margin-top: -8px;
 
   font-size: 20px;
 
-  opacity: 0.8;
+  color: var(--secondary);
 }
 
-/* Notification */
+/* =======================================
+   NOTIFICATION
+======================================= */
 
 .notification {
   width: min(92%, 380px);
 
-  padding: 18px;
-
-  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.08);
 
   backdrop-filter: blur(35px);
 
-  background: rgba(255, 255, 255, 0.08);
-
   border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 28px;
+
+  padding: 18px;
 
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
 }
@@ -122,210 +230,25 @@ body {
   justify-content: space-between;
 
   font-size: 14px;
+}
 
-  opacity: 0.7;
+.notification-left {
+  opacity: 0.75;
+
+  font-weight: 600;
+}
+
+.notification-right {
+  opacity: 0.55;
 }
 
 .sender {
-  margin-top: 10px;
+  margin-top: 12px;
 
   font-size: 17px;
 
   font-weight: 600;
 }
-
-.message-preview {
-  margin-top: 8px;
-
-  opacity: 0.55;
-
-  letter-spacing: 3px;
-}
-
-/* Unlock */
-
-.unlock {
-  margin-bottom: 20px;
-
-  font-size: 15px;
-
-  opacity: 0.7;
-
-  animation: pulse 2s infinite;
-}
-
-/* ========================= */
-/* Face */
-/* ========================= */
-
-#face-screen {
-  background: #000;
-}
-
-.face-wrapper {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  gap: 22px;
-}
-
-.face-box {
-  width: 150px;
-
-  height: 150px;
-
-  position: relative;
-}
-
-.corner {
-  position: absolute;
-
-  width: 35px;
-  height: 35px;
-
-  border: 4px solid #30d5ff;
-}
-
-.tl {
-  top: 0;
-  left: 0;
-
-  border-right: none;
-  border-bottom: none;
-}
-
-.tr {
-  top: 0;
-  right: 0;
-
-  border-left: none;
-  border-bottom: none;
-}
-
-.bl {
-  bottom: 0;
-  left: 0;
-
-  border-right: none;
-  border-top: none;
-}
-
-.br {
-  bottom: 0;
-  right: 0;
-
-  border-left: none;
-  border-top: none;
-}
-
-.face-box {
-  animation: scan 2s infinite;
-}
-
-.face-wrapper h2 {
-  font-size: 34px;
-
-  font-weight: 500;
-}
-
-.face-wrapper p {
-  opacity: 0.6;
-}
-
-/* ========================= */
-/* Hello */
-/* ========================= */
-
-#hello-screen {
-  background: #000;
-}
-
-#hello-screen h1 {
-  text-align: center;
-
-  font-size: 48px;
-
-  line-height: 1.3;
-
-  font-weight: 300;
-}
-
-/* ========================= */
-
-@keyframes pulse {
-  0% {
-    opacity: 0.4;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.4;
-  }
-}
-
-@keyframes scan {
-  0% {
-    transform: scale(0.92);
-  }
-
-  50% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0.92);
-  }
-}
-/* Swipe Arrow */
-
-.arrow {
-  font-size: 34px;
-
-  margin-bottom: 10px;
-
-  animation: arrowMove 1.4s ease-in-out infinite;
-}
-
-.unlock {
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  gap: 6px;
-
-  user-select: none;
-}
-
-@keyframes arrowMove {
-  0% {
-    transform: translateY(8px);
-
-    opacity: 0.3;
-  }
-
-  50% {
-    transform: translateY(0px);
-
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(8px);
-
-    opacity: 0.3;
-  }
-}
-/* ========================= */
-/* Fake Blurred Message */
-/* ========================= */
 
 .message-preview {
   margin-top: 12px;
@@ -347,8 +270,6 @@ body {
     rgba(255, 255, 255, 0.22),
     rgba(255, 255, 255, 0.08)
   );
-
-  filter: blur(0.4px);
 }
 
 .w90 {
@@ -358,58 +279,186 @@ body {
 .w65 {
   width: 65%;
 }
-.notification-left {
-  font-weight: 600;
+
+/* =======================================
+   SWIPE
+======================================= */
+
+.unlock {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 6px;
 
   opacity: 0.75;
+
+  user-select: none;
 }
 
-.notification-right {
-  opacity: 0.55;
+.arrow {
+  font-size: 34px;
+
+  animation: arrowMove 1.5s infinite;
 }
-/* ================================= */
-/* Hello Screen */
-/* ================================= */
+
+@keyframes arrowMove {
+  0% {
+    transform: translateY(8px);
+
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translateY(0);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(8px);
+
+    opacity: 0.3;
+  }
+}
+/* =======================================
+   FACE ID
+======================================= */
+
+#face-screen {
+  background: #000;
+}
+
+.face-wrapper {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 24px;
+}
+
+.face-icon {
+  position: relative;
+
+  width: 150px;
+
+  height: 150px;
+}
+
+.face-icon svg {
+  width: 100%;
+
+  height: 100%;
+
+  stroke: var(--primary);
+
+  stroke-width: 3;
+
+  fill: none;
+
+  filter: drop-shadow(0 0 14px rgba(77, 163, 255, 0.45));
+}
+
+.face-icon circle {
+  fill: var(--primary);
+
+  stroke: none;
+}
+
+.scan-line {
+  position: absolute;
+
+  left: 15px;
+
+  right: 15px;
+
+  height: 3px;
+
+  background: var(--primary);
+
+  border-radius: 999px;
+
+  box-shadow: 0 0 18px var(--primary);
+
+  animation: scanLine 2s linear infinite;
+}
+
+@keyframes scanLine {
+  from {
+    top: 18px;
+  }
+
+  to {
+    top: 118px;
+  }
+}
+
+.face-wrapper h2 {
+  font-size: 34px;
+
+  font-weight: 500;
+}
+
+#face-status {
+  color: var(--secondary);
+}
+
+/* =======================================
+   HELLO
+======================================= */
+
+#hello-screen {
+  background: #000;
+}
 
 .hello-wrapper {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
-  justify-content: center;
+
+  text-align: center;
 }
 
 .identity-confirmed {
   display: flex;
-  flex-direction: column;
-  align-items: center;
 
-  transition: 0.6s;
+  flex-direction: column;
+
+  align-items: center;
 }
 
 .check-circle {
-  width: 90px;
-  height: 90px;
+  width: 92px;
+
+  height: 92px;
 
   border-radius: 50%;
 
-  border: 3px solid #4da3ff;
+  border: 3px solid var(--primary);
 
   display: flex;
 
   justify-content: center;
+
   align-items: center;
 
-  font-size: 48px;
+  font-size: 46px;
 
-  color: #4da3ff;
+  color: var(--primary);
 
-  box-shadow: 0 0 40px rgba(77, 163, 255, 0.25);
+  box-shadow: 0 0 35px rgba(77, 163, 255, 0.25);
 }
 
 .identity-confirmed p {
   margin-top: 18px;
 
-  color: #4da3ff;
+  color: var(--primary);
 
   font-size: 20px;
 
@@ -419,11 +468,9 @@ body {
 .hello-message {
   opacity: 0;
 
-  transform: translateY(25px);
+  transform: translateY(20px);
 
-  transition: 0.8s;
-
-  text-align: center;
+  transition: 0.7s;
 
   margin-top: 45px;
 }
@@ -441,61 +488,199 @@ body {
 }
 
 .hello-message h2 {
+  margin-top: 8px;
+
+  font-size: 58px;
+
+  font-weight: 600;
+}
+
+/* =======================================
+   QUESTION SCREEN
+======================================= */
+
+#question-content {
+  margin-top: 28px;
+}
+
+.choice {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 16px;
+
+  margin-bottom: 14px;
+
+  border-radius: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background: rgba(255, 255, 255, 0.05);
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.choice:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.choice.selected {
+  border-color: var(--primary);
+
+  background: rgba(77, 163, 255, 0.18);
+}
+/* =======================================
+   TIMER
+======================================= */
+
+.relationship-timer {
+  margin: 32px 0;
+
+  text-align: center;
+
+  font-size: 34px;
+
+  font-weight: 700;
+
+  color: var(--primary);
+
+  line-height: 1.5;
+}
+
+.timer-caption {
+  text-align: center;
+
+  margin-bottom: 8px;
+}
+
+/* =======================================
+   ENVELOPES
+======================================= */
+
+.envelopes {
+  margin-top: 28px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+.envelope {
+  padding: 20px;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.envelope:active {
+  transform: scale(0.98);
+}
+
+.envelope-icon {
+  font-size: 40px;
+
+  margin-bottom: 14px;
+}
+
+/* =======================================
+   MODAL
+======================================= */
+
+.modal {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.82);
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  padding: 24px;
+
+  z-index: 999;
+}
+
+.hidden {
+  display: none;
+}
+
+#modal-content {
+  width: min(92vw, 420px);
+
+  max-height: 90vh;
+
+  overflow: auto;
+
+  background: #111;
+
+  border-radius: 24px;
+
+  padding: 24px;
+}
+
+/* =======================================
+   FINAL NOTIFICATION
+======================================= */
+
+.final-card {
+  text-align: center;
+}
+
+.iphone-notification h2 {
+  margin-bottom: 18px;
+}
+
+.iphone-notification p {
+  font-size: 22px;
+
   margin-top: 10px;
-
-  font-size: 60px;
-
-  font-weight: 500;
-}
-.face-icon {
-  position: relative;
-
-  width: 140px;
-  height: 140px;
 }
 
-.face-icon svg {
-  width: 100%;
-  height: 100%;
+/* =======================================
+   RESPONSIVE
+======================================= */
 
-  stroke: #4da3ff;
-
-  stroke-width: 3;
-
-  fill: none;
-
-  filter: drop-shadow(0 0 12px rgba(77, 163, 255, 0.45));
-}
-
-.face-icon circle {
-  fill: #4da3ff;
-
-  stroke: none;
-}
-
-.scan-line {
-  position: absolute;
-
-  left: 15px;
-  right: 15px;
-
-  height: 3px;
-
-  background: #4da3ff;
-
-  border-radius: 999px;
-
-  box-shadow: 0 0 20px #4da3ff;
-
-  animation: scanLine 2s infinite linear;
-}
-
-@keyframes scanLine {
-  from {
-    top: 18px;
+@media (max-width: 390px) {
+  .question-card {
+    padding: 22px;
   }
 
-  to {
-    top: 118px;
+  .time {
+    font-size: 68px;
   }
+
+  .hello-message h1 {
+    font-size: 46px;
+  }
+
+  .hello-message h2 {
+    font-size: 48px;
+  }
+
+  .question-card h2 {
+    font-size: 26px;
+  }
+}
+.primary-btn:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
 }
