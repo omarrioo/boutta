@@ -496,14 +496,19 @@ function startEngagementDate() {
 
   input.className = "date-input";
 
-  input.onchange = () => {
+  function enableDateSelection() {
     selectedAnswer = input.value;
 
     continueBtn.disabled = false;
-  };
+  }
+
+  input.addEventListener("input", enableDateSelection);
+  input.addEventListener("change", enableDateSelection);
 
   questionContent.appendChild(input);
 
+  continueBtn.disabled = false;
+  selectedAnswer = "2026-03-03";
   continueBtn.onclick = () => {
     console.log("Done Clicked");
     if (selectedAnswer !== "2026-03-03") {
